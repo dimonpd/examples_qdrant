@@ -1,0 +1,29 @@
+[project]
+name = "examples-qdrant"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Dmitriy Pavlyukevich", email = "Dmitriy.Pavlyukevich@lemanapro.ru" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "llama-index-core>=0.14.24",
+    "llama-index-embeddings-huggingface>=0.8.0",
+    "polars>=1.44.2",
+    "qdrant-client>=1.19.0",
+    "sentence-transformers>=6.0.1",
+    "transformers>=5.17.0",
+]
+
+[project.scripts]
+examples-qdrant = "examples_qdrant:main"
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+]
