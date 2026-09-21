@@ -3,12 +3,16 @@ version: "3.8"
 services:
   qdrant:
     image: qdrant/qdrant:latest
+    container_name: qdrant_stepik
+
+    # HOST:CONTAINER. Внутри контейнера Qdrant всегда слушает 6333 (REST) и 6334 (gRPC) -
+    # это задано образом. А 6333/6334 на ХОСТЕ заняты контейнером qdrant-b2b,
+    # поэтому на хосте берём свободные 6336/6337 и ведём их на 6333/6334.
     ports:
-      - "6333:6333"
-      - "6334:6334"
+      - "6336:6333"
+      - "6337:6334"
     volumes:
       - ./qdrant_storage:/qdrant/storage
     environment:
-      QDRANT__SERVICE__API_KEY: "локальный-ключ-для-теста"
-      
-   
+      # значение берётся из stepik/.env (он в .gitignore) - в репозитории секрета нет
+      QDRANT__SERVICE__API_KEY: ${QDRANT__SERVICE__API_KEY:?Задайте QDRANT__SERVICE__API_KEY в stepik/.env}
