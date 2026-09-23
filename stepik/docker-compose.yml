@@ -15,4 +15,4 @@ services:
       - ./qdrant_storage:/qdrant/storage
     environment:
       # значение берётся из stepik/.env (он в .gitignore) - в репозитории секрета нет
-      QDRANT__SERVICE__API_KEY: ${QDRANT__SERVICE__API_KEY:?Задайте QDRANT__SERVICE__API_KEY в stepik/.env}
+      QDRANT__SERVICE__API_KEY: ${QDRANT__SERVICE__API_KEY:?Задай QDRANT__SERVICE__API_KEY в stepik/.env}
